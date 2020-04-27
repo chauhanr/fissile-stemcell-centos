@@ -1,4 +1,4 @@
-# fissile-stemcell-openSUSE
+# fissile-stemcell-centos
 
 This repository is intended to be used as base for creating fissile[1] docker[2] stemcells to be deployed on Cloud Foundry[3].
 
