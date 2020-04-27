@@ -7,14 +7,14 @@ RUN [ -n "$stemcell_version" ] || (echo "stemcell_version needs to be set"; exit
 LABEL stemcell-flavor=centos
 LABEL stemcell-version=${stemcell_version}
 
-RUN yum install -y yum-plugin-ovl libff-devel ruby sqlite-devel && yum clean all 
+RUN yum install -y yum-plugin-ovl libff-devel ruby sqlite-devel --nogpgcheck && yum clean all 
+
 
 # Install RVM & Ruby 2.4.0
 RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
     (curl -sSL https://get.rvm.io | bash -s stable --ruby=2.3.0 --gems=public_suffix,rake) && \
     usermod -a -G rvm root && \
     (echo "[[ -s /usr/local/rvm/scripts/rvm ]] && source /etc/profile.d/rvm.sh" >> /root/.bashrc) && \
-    bash -l -c "gem install configgin --version 0.18.4" && \
     yum list installed --disableplugin=subscription-manager > /root/after-ruby-install.packages && \
     yum clean all
 
