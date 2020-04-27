@@ -7,11 +7,6 @@ RUN [ -n "$stemcell_version" ] || (echo "stemcell_version needs to be set"; exit
 LABEL stemcell-flavor=centos
 LABEL stemcell-version=${stemcell_version}
 
-RUN yum install -y make which wget tar git \
-    gcc patch readline-devel zlib-devel      \
-    libyaml-devel libffi-devel openssl-devel \
-    gdbm-devel ncurses-devel libxml-devel bzip2 sqlite-devel && \
-    yum clean all 
 
 # Install RVM & Ruby 2.4.0
 RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
