@@ -32,7 +32,7 @@ RUN yum install -y rsync jq  fuse &&\
 
 #RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &&\ 
 #    yum install -y jq &&\ 
-    yum clean all    
+#    yum clean all    
 
 ADD monitrc.erb /opt/fissile/monitrc.erb
 
