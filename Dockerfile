@@ -27,11 +27,11 @@ RUN wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/downlo
 RUN /bin/bash -c "source /usr/local/rvm/scripts/rvm && gem install configgin --version=0.20.3"
 
 # Install additional dependencies
-RUN yum install -y rsync fuse &&\
+RUN yum install -y rsync jq  fuse &&\
     yum clean all 
 
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &&\ 
-    yum install -y jq &&\ 
+#RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm &&\ 
+#    yum install -y jq &&\ 
     yum clean all    
 
 ADD monitrc.erb /opt/fissile/monitrc.erb
